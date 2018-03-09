@@ -65,11 +65,12 @@ create/update
     is_active
 })
 ```
-# JSON типы
 
+# JSON типы
 
 ## CharaType
 
+```
 id (get, update)
 fullname
 display_name
@@ -79,14 +80,13 @@ avatar_url: url (get)
 color: css color
 scopes: []
 created_by: UserType (get)
+```
 
 ## UserType
+```
 id
 username
-
-
-
-
+```
 
 
 
