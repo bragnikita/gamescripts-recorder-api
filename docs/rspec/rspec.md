@@ -1,5 +1,15 @@
 # RSpec
 
+## Links
+[Best practices](http://www.betterspecs.org/)
+
+## Install it
+
+### For Rails
+```bash
+rails g rspec:install
+```
+
 ## Matchers
 * [Build-in matchers](https://relishapp.com/rspec/rspec-expectations/docs/built-in-matchers)
 
