@@ -9,5 +9,5 @@
 class Script < ApplicationRecord
   belongs_to :owner, class_name: 'User', optional: false, inverse_of: 'scripts'
   belongs_to :chara_candidates, class_name: 'CharacterList', optional: true
-  has_and_belongs_to_many :characters, join_table: 'script_characters'
+  has_and_belongs_to_many :characters, join_table: 'script_characters', association_foreign_key: "characters_id", foreign_key: 'scripts_id'
 end

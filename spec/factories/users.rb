@@ -22,6 +22,18 @@ FactoryBot.define do
       end
     end
 
+    trait :with_scripts do
+      after(:create) do |user, evaluator|
+        create_list(:script, 3, owner: user)
+      end
+    end
+
+    trait :with_character_lists do
+      after(:create) do |user, evaluator|
+        create_list(:character_list, 3, owner: user)
+      end
+    end
+
   end
 
 end

@@ -16,6 +16,6 @@ class Character < ApplicationRecord
 
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id', optional: true, :inverse_of => :characters
   belongs_to :avatar, class_name: 'Image', foreign_key: 'avatar_id', optional: true
-  has_and_belongs_to_many :scripts, join_table: 'script_characters'
-  has_and_belongs_to_many :lists, class_name: 'CharacterList', join_table: 'characters_and_lists'
+  has_and_belongs_to_many :scripts, join_table: 'script_characters', association_foreign_key: 'scripts_id', foreign_key: 'characters_id'
+  has_and_belongs_to_many :lists, class_name: 'CharacterList', join_table: 'characters_and_lists', foreign_key: 'characters_id', association_foreign_key: 'character_lists_id'
 end

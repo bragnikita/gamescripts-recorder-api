@@ -33,15 +33,19 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    subject { create(:user, :with_characters) }
+    subject { create(:user, :with_characters, :with_scripts, :with_character_lists) }
     it "must fetch user's characters" do
       expect(subject).to have_many(:characters)
       expect(subject.characters).to have_exactly(3).items
     end
     it "must fetch user's scripts" do
-      expect()
+      expect(subject).to have_many(:scripts)
+      expect(subject.scripts).to have_exactly(3).items
     end
-    it "must fetch user's character lists"
+    it "must fetch user's character lists" do
+      expect(subject).to have_many(:character_lists)
+      expect(subject.character_lists).to have_exactly(3).items
+    end
   end
 
 

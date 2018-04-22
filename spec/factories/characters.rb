@@ -9,7 +9,15 @@ FactoryBot.define do
     avatar nil
 
     factory :user_character do
-      association :creator, factory: :user, username: "bragnikita"
+      association :creator, factory: :user
+    end
+    factory :character_full do
+      association :avatar, factory: :avatar
+
+      after(:create) do |character, evaluator|
+        create_list(:script, 3, characters: [character])
+        create_list(:character_list, 3, characters: [character])
+      end
     end
   end
 end
