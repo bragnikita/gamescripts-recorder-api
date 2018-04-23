@@ -68,6 +68,31 @@ create/update
 
 # JSON типы
 
+## CreatedType
+```
+{
+    object: {
+        id
+    }
+}
+```
+## ListingType
+```
+{
+    collection: []
+}
+```
+
+## ErrorType
+```
+{
+    message
+    errors: []
+}
+
+```
+
+
 ## CharaType
 
 ```
