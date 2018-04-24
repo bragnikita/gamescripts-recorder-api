@@ -6,6 +6,7 @@ FactoryBot.define do
     password "JIjo321fds"
     is_admin false
     is_active true
+    email "aaa@example.com"
 
     factory :user_with_mail do
       email "aaa@example.com"

@@ -10,6 +10,13 @@ class UsersController < ApplicationController
     }
   end
 
+  def show
+    op = operations :select
+    op.id = params[:id]
+    user = op.call.result
+    render status: :ok, json: serialize_user(user)
+  end
+
   def create
     op = operations :create
     op.attributes = create_user_params
@@ -31,6 +38,13 @@ class UsersController < ApplicationController
     }
   end
 
+  def destroy
+    op = operations(:delete)
+    op.id = params[:id]
+    op.call
+    render status: :no_content
+  end
+
   private
 
   def operations(name)
@@ -41,6 +55,8 @@ class UsersController < ApplicationController
         Create.new
       when :update
         Update.new
+      when :delete
+        Delete.new
       else
         raise "#{name} is not implemented yet"
     end

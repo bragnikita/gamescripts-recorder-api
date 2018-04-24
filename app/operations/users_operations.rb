@@ -7,6 +7,10 @@ module UsersOperations
       self
     end
 
+    def result
+      nil
+    end
+
 
     protected
 
@@ -18,13 +22,18 @@ module UsersOperations
   public
 
   class Select < Base
+    attr_accessor :id
 
     def doWork
-      self
+      if id
+        @result = User.find(id)
+      else
+        @result = User.all
+      end
     end
 
     def result
-      User.all
+      @result
     end
   end
 
@@ -51,6 +60,14 @@ module UsersOperations
 
     def result
       @user
+    end
+  end
+
+  class Delete < Base
+    attr_accessor :id
+
+    def doWork
+      User.find(id).update!(:is_active => false)
     end
   end
 

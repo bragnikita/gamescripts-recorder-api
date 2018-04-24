@@ -3,8 +3,8 @@
 ## вспомогательное
 
 ```
-upload_image(type, image_content): { result, message, data: {id, url, type} }
-get(id): {result, message, data: {id, url, type}}
+upload_image(type, image_content): { message, object: {id, url, type} }
+get(id): { message, object: {id, url, type}}
 image(id): HTTP redirect, Status: 301, Location: url
 ```
 
@@ -31,7 +31,7 @@ result, message
 }
 
 list_add / list_update ( {id, name, scopes:[]} ):
-{ result, message, data: {id, name, scopes:[]} }
+{ result, message, object: {id, name, scopes:[]} }
 
 add_chara_to_list / remove_chara_from_list (chara_id, list_id)
 {
@@ -111,6 +111,8 @@ created_by: UserType (get)
 ```
 id
 username
+is_active
+email
 ```
 
 

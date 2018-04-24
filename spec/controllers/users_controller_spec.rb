@@ -14,6 +14,20 @@ RSpec.describe UsersController, type: :request do
       expect(getBody[:collection]).to include include({:id => anything, :username => 'bar'})
     end
   end
+  describe 'show()' do
+    it 'gets single user' do
+      user = create(:user_with_mail, :username => 'foo')
+      get "/users/#{user.id}"
+      expect(response).to have_http_status(:ok)
+      expect(getBody)
+          .to a_hash_including(
+                  :id => user.id,
+                  :username => 'foo',
+                  :is_active => true,
+                  :email => a_kind_of(String)
+              )
+    end
+  end
   describe 'create()' do
     it 'creates new user' do
       post "/users", params: {:user => {:username => 'foo', :password => 'password'}}
@@ -57,6 +71,15 @@ RSpec.describe UsersController, type: :request do
       expect(getBody[:object]).to be_truthy
       expect(getBody[:object]).to a_hash_including(:id => user.id, :email => 'new@mail.com')
       expect(User.find(user.id).email).to eq('new@mail.com')
+    end
+  end
+
+  describe 'destroy()' do
+    it 'mark user as inactive' do
+      user = create(:user, :username => 'foo', :password => 'pw', :email => 'example@mail.com')
+      delete "/users/#{user.id}"
+      expect(response).to have_http_status(:no_content)
+      expect(User.find(user.id)).to have_attributes(:is_active => false)
     end
   end
 end
