@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :bigint(8)        not null, primary key
+#  email      :string(50)
+#  is_active  :boolean          default(TRUE)
+#  is_admin   :boolean          default(FALSE)
+#  password   :string(50)
+#  username   :string(50)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  avatar_id  :bigint(8)
+#
+# Indexes
+#
+#  index_users_on_avatar_id  (avatar_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (avatar_id => images.id)
+#
+
 FactoryBot.define do
   factory :user do
     sequence :username do |n| # генератор уникальных значений
