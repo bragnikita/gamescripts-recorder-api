@@ -28,7 +28,11 @@ FactoryBot.define do
     end
 
     factory :avatar do
-      type 'character_avatar'
+      category 'character_avatar'
+    end
+
+    trait :with_attached_file do
+      link File.open(File.expand_path('../images/screenshot.png', __FILE__))
     end
   end
 

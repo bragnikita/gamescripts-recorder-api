@@ -29,6 +29,6 @@ class Image < ApplicationRecord
   private
 
   def set_defaults
-    this.type = 'common'
+    self.category = 'common'
   end
 end

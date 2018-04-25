@@ -3,7 +3,7 @@ class CreateMainTables < ActiveRecord::Migration[5.1]
 
     create_table :images do |t|
       t.string :link
-      t.string :type
+      t.string :category
       t.timestamps
     end
 
