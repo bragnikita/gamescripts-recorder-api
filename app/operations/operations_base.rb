@@ -1,12 +1,12 @@
 module Operations
   class Base
     def call
-      doWork
+      @result = doWork
       self
     end
 
     def result
-      nil
+      @result
     end
 
 

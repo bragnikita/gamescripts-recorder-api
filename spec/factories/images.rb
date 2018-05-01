@@ -34,6 +34,10 @@ FactoryBot.define do
     trait :with_attached_file do
       link File.open(File.expand_path('../images/screenshot.png', __FILE__))
     end
+
+    factory :common_image do
+      with_attached_file
+    end
   end
 
 end

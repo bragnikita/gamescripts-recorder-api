@@ -29,6 +29,6 @@ class Image < ApplicationRecord
   private
 
   def set_defaults
-    self.category = 'common'
+    self.category = 'common' if self.category.nil?
   end
 end

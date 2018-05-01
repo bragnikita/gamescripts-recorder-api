@@ -31,5 +31,6 @@ module Api
     config.api_only = true
 
     config.autoload_paths << "#{Rails.root}/app/uploaders"
+    config.autoload_paths << "#{Rails.root}/app/operations"
   end
 end

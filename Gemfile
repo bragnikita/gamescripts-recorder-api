@@ -43,6 +43,7 @@ group :test do
   gem "factory_bot_rails", "~> 4.0"
   gem 'rspec-collection_matchers'
   gem 'database_cleaner'
+  gem 'rspec-json_expectations'
 end
 
 group :development do
