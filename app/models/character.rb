@@ -3,26 +3,23 @@
 # Table name: characters
 #
 #  id           :bigint(8)        not null, primary key
+#  avatar       :string(255)
 #  css_color    :string(255)
 #  display_name :string(255)
 #  fullname     :string(255)
 #  prefixes     :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  avatar_id    :bigint(8)
 #  creator_id   :bigint(8)
 #
 # Indexes
 #
-#  index_characters_on_avatar_id   (avatar_id)
 #  index_characters_on_creator_id  (creator_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (avatar_id => images.id)
 #  fk_rails_...  (creator_id => users.id) ON DELETE => nullify
 #
-
 
 class Character < ApplicationRecord
   with_options presence: true do |char|

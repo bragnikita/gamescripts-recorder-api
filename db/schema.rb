@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424104257) do
+ActiveRecord::Schema.define(version: 20180503152616) do
 
   create_table "character_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 20180424104257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "avatar_id"
-    t.index ["avatar_id"], name: "index_characters_on_avatar_id"
+    t.string "avatar"
     t.index ["creator_id"], name: "index_characters_on_creator_id"
   end
 
@@ -100,12 +99,10 @@ ActiveRecord::Schema.define(version: 20180424104257) do
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "avatar_id"
-    t.index ["avatar_id"], name: "index_users_on_avatar_id", unique: true
+    t.string "avatar"
   end
 
   add_foreign_key "character_lists", "users", column: "owner_id", on_delete: :cascade
-  add_foreign_key "characters", "images", column: "avatar_id"
   add_foreign_key "characters", "users", column: "creator_id", on_delete: :nullify
   add_foreign_key "characters_and_lists", "character_lists", column: "character_lists_id"
   add_foreign_key "characters_and_lists", "characters", column: "characters_id"
@@ -114,5 +111,4 @@ ActiveRecord::Schema.define(version: 20180424104257) do
   add_foreign_key "script_characters", "scripts", column: "scripts_id"
   add_foreign_key "scripts", "character_lists", column: "chara_candidates_id", on_delete: :nullify
   add_foreign_key "scripts", "users", column: "owner_id", on_delete: :nullify
-  add_foreign_key "users", "images", column: "avatar_id"
 end
